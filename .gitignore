@@ -1,0 +1,6 @@
+# temp files
+*~
+
+# env files
+/lambda.json
+
