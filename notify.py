@@ -17,7 +17,7 @@ locations = ['トイレ/風呂/洗面所',
 
 
 def select_location(date):
-    return locations[date.day/7]
+    return locations[date.day//7]
 
 def build_message(day):
     color = '#808080'
