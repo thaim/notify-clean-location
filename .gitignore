@@ -4,3 +4,7 @@
 # env files
 /lambda.json
 
+# generated files
+/function.zip
+/package/
+/venv/
