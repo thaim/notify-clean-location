@@ -1,4 +1,5 @@
 function := "NotifyCleanLocation"
+message  := $(shell git log --decorate=no --oneline -1)
 
 .PHONY: help deps lint test fmt build clean
 
@@ -21,10 +22,9 @@ deploy: package ## deploy lambda function
 	aws lambda update-function-code \
 		--function-name $(function) \
 		--zip-file fileb://function.zip
-	message=`git log --decorate=no --oneline -1`
 	aws lambda publish-version \
 		--function-name $(function) \
-		--description $(message)
+		--description "$(message)"
 
 clean: ## Remove unnecessary files
 	-@rm -r function.zip package
