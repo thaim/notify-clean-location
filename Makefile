@@ -21,6 +21,10 @@ deploy: package ## deploy lambda function
 	aws lambda update-function-code \
 		--function-name $(function) \
 		--zip-file fileb://function.zip
+	message=`git log --decorate=no --oneline -1`
+	aws lambda publish-version \
+		--function-name $(function) \
+		--description $(message)
 
 clean: ## Remove unnecessary files
 	-@rm -r function.zip package
